@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import SearchModal from "@/components/SearchModal";
 import searchIcon from "@/assets/icons/search.svg";
 import profileIcon from "@/assets/icons/user.svg";
@@ -16,6 +16,7 @@ const Navbar = () => {
 	}
 
 	const path = usePathname();
+	const router = useRouter();
 
 	const [prevScrollPos, setPrevScrollPos] = useState(wind);
 	const [top, setTop] = useState(0);
@@ -92,7 +93,11 @@ const Navbar = () => {
 							style={{ width: "30px", height: "30px" }}
 						/>
 					</button>
-					<button>
+					<button
+						onClick={() => {
+							router.push("/profile");
+						}}
+					>
 						<Image
 							src={profileIcon}
 							alt="profile-icon"
