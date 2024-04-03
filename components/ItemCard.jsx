@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const ItemCard = ({ image, name, price }) => {
 	return (
-		<Link href="#" className="card-container">
+		<Link href="/item/1" className="card-container">
 			<div className="item-card">
 				<Image src={image} alt={name} />
 			</div>

@@ -1,10 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import closeIcon from "@/assets/icons/close.svg";
 import "@/assets/styles/components/SearchModal.scss";
 import Image from "next/image";
 
 const SearchModal = ({ closeSearchModal }) => {
+	const [searchTerm, setSearchTerm] = useState("");
+
 	const ref = useRef();
+	const router = useRouter();
 
 	useEffect(() => {
 		let closeModal = (e) => {
@@ -17,6 +21,18 @@ const SearchModal = ({ closeSearchModal }) => {
 			document.removeEventListener("mousedown", closeModal);
 		};
 	}, []);
+
+	function handleKeyDown(e) {
+		if (e.key === "Enter") {
+			runSearch();
+		}
+	}
+
+	function runSearch() {
+		router.push(`/search/${searchTerm}`);
+		closeSearchModal();
+	}
+
 	return (
 		<div className="search-modal-container">
 			{/* <h2>Search</h2> */}
@@ -26,6 +42,9 @@ const SearchModal = ({ closeSearchModal }) => {
 					name="search"
 					id="search"
 					placeholder="Search..."
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+					onKeyDown={handleKeyDown}
 				/>
 				<button onClick={() => closeSearchModal()}>
 					<Image

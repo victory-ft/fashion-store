@@ -58,25 +58,24 @@ const Navbar = () => {
 				<ul className="links">
 					<li>
 						<Link
-							href={`/category/men ${path == "/category/men" ? "active" : ""}`}
+							href="/category/men"
+							className={path == "/category/men" ? "active" : ""}
 						>
 							Men
 						</Link>
 					</li>
 					<li>
 						<Link
-							href={`/category/women ${
-								path == "/category/women" ? "active" : ""
-							}`}
+							href="/category/women"
+							className={path == "/category/women" ? "active" : ""}
 						>
 							Women
 						</Link>
 					</li>
 					<li>
 						<Link
-							href={`/category/kids ${
-								path == "/category/kids" ? "active" : ""
-							}`}
+							href="/category/kids"
+							className={path == "/category/kids" ? "active" : ""}
 						>
 							Kids
 						</Link>
