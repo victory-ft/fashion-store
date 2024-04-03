@@ -1,0 +1,50 @@
+@import "../variables";
+
+nav {
+	background-color: $section-bg-color;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 50px;
+	position: fixed;
+	width: calc(100% - 100px);
+	transition: top 0.3s;
+	left: 0;
+	z-index: 98;
+
+	.logo-name {
+		font-size: 1.1rem;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	ul {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		li {
+			margin-right: 20px;
+			list-style: none;
+
+			a {
+				text-decoration: none;
+				font-weight: 700;
+				font-size: 1rem;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.profile-actions {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		button {
+			text-align: center;
+			background-color: transparent;
+			border: none;
+			margin-right: 15px;
+		}
+	}
+}

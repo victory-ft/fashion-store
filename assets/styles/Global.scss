@@ -1,0 +1,27 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+	font-family: "Lato", sans-serif;
+	color: $main-text-color;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.main-content-overall {
+	margin-top: 50px;
+}
+
+.main-header {
+	font-family: "Frank Ruhl Libre", serif;
+	position: relative;
+}
+
+button {
+	cursor: pointer;
+}

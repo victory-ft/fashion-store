@@ -1,0 +1,33 @@
+@import "../variables";
+
+footer {
+	background-color: $secondary-bg-color;
+	margin-bottom: 0;
+	margin-top: 10px;
+	padding: 25px 10px;
+
+	.links {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		a {
+			text-decoration: none;
+			text-transform: uppercase;
+			color: #fff;
+			margin: 5px 10px;
+			font-size: 0.9rem;
+			font-weight: 700;
+		}
+	}
+
+	p {
+		margin-bottom: 0;
+		text-align: center;
+		color: #ffffff9e;
+		.footer-logo {
+			color: #ffffff9e;
+			font-weight: 700;
+		}
+	}
+}
