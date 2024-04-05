@@ -69,11 +69,7 @@ const Navbar = () => {
 						style={{ width: "30px", height: "30px" }}
 					/>
 				</button>
-				<Link
-					href="/"
-					className="logo-name"
-					onClick={() => setShowMenu((prev) => !prev)}
-				>
+				<Link href="/" className="logo-name" onClick={() => setShowMenu(false)}>
 					FASHION
 				</Link>
 				<ul className="links no-mobile">
@@ -149,7 +145,7 @@ const Navbar = () => {
 						<Link
 							href="/category/men"
 							className={`${path == "/category/men" ? "active" : ""}`}
-							onClick={() => setShowMenu((prev) => !prev)}
+							onClick={() => setShowMenu(false)}
 						>
 							Men
 						</Link>
@@ -158,7 +154,7 @@ const Navbar = () => {
 						<Link
 							href="/category/women"
 							className={`${path == "/category/women" ? "active" : ""}`}
-							onClick={() => setShowMenu((prev) => !prev)}
+							onClick={() => setShowMenu(false)}
 						>
 							Women
 						</Link>
@@ -167,7 +163,7 @@ const Navbar = () => {
 						<Link
 							href="/category/kids"
 							className={`${path == "/category/kids" ? "active" : ""}`}
-							onClick={() => setShowMenu((prev) => !prev)}
+							onClick={() => setShowMenu(false)}
 						>
 							Kids
 						</Link>
@@ -176,7 +172,7 @@ const Navbar = () => {
 						<Link
 							href="/profile"
 							className={`${path == "/category/kids" ? "active" : ""}`}
-							onClick={() => setShowMenu((prev) => !prev)}
+							onClick={() => setShowMenu(false)}
 						>
 							Profile
 						</Link>
