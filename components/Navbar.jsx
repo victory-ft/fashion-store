@@ -106,7 +106,11 @@ const Navbar = () => {
 							style={{ width: "30px", height: "30px" }}
 						/>
 					</button>
-					<button>
+					<button
+						onClick={() => {
+							router.push("/cart");
+						}}
+					>
 						<Image
 							src={cart}
 							alt="cart"

@@ -10,7 +10,7 @@ const ItemCard = ({ image, name, price }) => {
 				<Image src={image} alt={name} />
 			</div>
 			<p className="item-name">{name}</p>
-			<p className="item-price">{price}</p>
+			<p className="item-price">${price}</p>
 		</Link>
 	);
 };

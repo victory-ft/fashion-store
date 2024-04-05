@@ -13,12 +13,13 @@ const ProfilePage = () => {
 			<p className="profile-info-header">Address</p>
 			<p className="profile-info">12 Lux Lane, Montreal, Canada</p>
 			<button
-				className="address"
+				className="address-btn"
 				onClick={() => router.push("/profile/addresses")}
 			>
 				Edit Addresses
 			</button>
 			<br />
+			<h2>Order History</h2>
 			<button className="logout">Log Out</button>
 		</div>
 	);

@@ -13,6 +13,7 @@
 		padding: 15px 30px;
 		border: none;
 		border-radius: 10px;
+		font-size: 1.2rem;
 	}
 }
 
@@ -28,10 +29,39 @@
 	margin-top: 0;
 }
 
-button.address {
-	background-color: $secondary-bg-color;
+button.address-btn {
+	background-color: $section-bg-color;
+	color: $secondary-bg-color;
 }
 
 button.logout {
 	background-color: $red-bg-color;
+}
+
+.address-container {
+	display: grid;
+	place-items: center;
+
+	.address {
+		h2 {
+			margin-bottom: 2px;
+		}
+
+		p {
+			margin: 2px 2px 5px;
+			font-size: 1.2rem;
+			// margin: 2px;
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	button {
+		font-size: 1.2rem;
+		margin: 10px;
+	}
 }
