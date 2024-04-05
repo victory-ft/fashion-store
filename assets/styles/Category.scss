@@ -1,5 +1,22 @@
 @import "./variables";
 
+button {
+	&.filter-no-mobile {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+		border: none;
+		font-size: 1rem;
+		max-width: 100px;
+	}
+}
+
+.filter-no-mobile,
+.filter-no-mobile-text {
+	display: none;
+}
+
 aside {
 	margin: 10px;
 
@@ -103,4 +120,34 @@ aside {
 	margin-bottom: 0;
 	padding-bottom: 0;
 	padding-left: 20px;
+}
+
+@media only screen and (max-width: 885px) {
+	.category-container {
+		grid-template-columns: 1fr;
+	}
+	.category-item-container {
+		justify-content: center;
+	}
+
+	.filter-no-mobile.show {
+		display: block;
+	}
+
+	aside {
+		.filter-btn {
+			p {
+				font-size: 1.2rem;
+			}
+		}
+
+		.price-range {
+			.price-input {
+				width: 30px;
+				height: 20px;
+				border-radius: 5px;
+				margin-right: 5px;
+			}
+		}
+	}
 }

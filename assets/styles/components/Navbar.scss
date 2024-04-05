@@ -99,6 +99,7 @@ nav {
 		z-index: 99;
 		left: 0;
 		transition: left 0.3s ease-in-out;
+		overflow: hidden;
 
 		&.hide {
 			left: -100%;

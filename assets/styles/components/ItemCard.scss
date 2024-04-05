@@ -10,6 +10,7 @@
 .card-container {
 	text-align: center;
 	text-decoration: none;
+	margin: 5px;
 
 	.item-name {
 		font-size: 1.1rem;
@@ -29,7 +30,6 @@
 	padding: 10px;
 	width: 300px;
 	height: 300px;
-	margin: 20px 5px;
 	border-radius: 20px;
 	display: flex;
 	justify-content: center;
@@ -44,6 +44,38 @@
 
 		&:hover {
 			scale: 1.05;
+		}
+	}
+}
+
+@media only screen and (max-width: 885px) {
+	.item-card {
+		width: 200px;
+		height: 200px;
+		margin: 20px 1px;
+
+		img {
+			width: 150px;
+			height: 200px;
+		}
+	}
+}
+
+@media only screen and (max-width: 885px) {
+	.item-card-container {
+		justify-content: center;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.item-card {
+		width: 150px;
+		height: 150px;
+		margin: 20px 5px;
+
+		img {
+			width: 100px;
+			height: 150px;
 		}
 	}
 }
