@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import SearchModal from "@/components/SearchModal";
 import menu from "@/assets/icons/menu.svg";
+import close from "@/assets/icons/close.svg";
 import searchIcon from "@/assets/icons/search.svg";
 import profileIcon from "@/assets/icons/user.svg";
 import cart from "@/assets/icons/shopping-cart.svg";
@@ -22,6 +23,7 @@ const Navbar = () => {
 	const [prevScrollPos, setPrevScrollPos] = useState(wind);
 	const [top, setTop] = useState(0);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
+	const [showMenu, setShowMenu] = useState(false);
 
 	const closeSearchModal = () => {
 		setIsSearchOpen(false);
@@ -54,22 +56,31 @@ const Navbar = () => {
 		<>
 			{isSearchOpen && <SearchModal closeSearchModal={closeSearchModal} />}
 			<nav style={navbarStyle}>
-				<Image
-					src={menu}
-					height={0}
-					width={0}
-					alt="menu"
-					className="mobile-only"
-					style={{ width: "30px", height: "30px" }}
-				/>
-				<Link href="/" className="logo-name">
+				<button
+					className="menu-btn"
+					onClick={() => setShowMenu((prev) => !prev)}
+				>
+					<Image
+						src={showMenu ? close : menu}
+						height={0}
+						width={0}
+						alt="menu"
+						className="mobile-only"
+						style={{ width: "30px", height: "30px" }}
+					/>
+				</button>
+				<Link
+					href="/"
+					className="logo-name"
+					onClick={() => setShowMenu((prev) => !prev)}
+				>
 					FASHION
 				</Link>
-				<ul className="links">
+				<ul className="links no-mobile">
 					<li>
 						<Link
 							href="/category/men"
-							className={`no-mobile ${path == "/category/men" ? "active" : ""}`}
+							className={`${path == "/category/men" ? "active" : ""}`}
 						>
 							Men
 						</Link>
@@ -77,9 +88,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							href="/category/women"
-							className={`no-mobile ${
-								path == "/category/women" ? "active" : ""
-							}`}
+							className={`${path == "/category/women" ? "active" : ""}`}
 						>
 							Women
 						</Link>
@@ -87,9 +96,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							href="/category/kids"
-							className={`no-mobile ${
-								path == "/category/kids" ? "active" : ""
-							}`}
+							className={`${path == "/category/kids" ? "active" : ""}`}
 						>
 							Kids
 						</Link>
@@ -135,6 +142,38 @@ const Navbar = () => {
 					</button>
 				</div>
 			</nav>
+
+			<div className={`mobile-nav mobile-only ${showMenu ? "" : "hide"}`}>
+				<ul className="links">
+					<li>
+						<Link
+							href="/category/men"
+							className={`${path == "/category/men" ? "active" : ""}`}
+							onClick={() => setShowMenu((prev) => !prev)}
+						>
+							Men
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/category/women"
+							className={`${path == "/category/women" ? "active" : ""}`}
+							onClick={() => setShowMenu((prev) => !prev)}
+						>
+							Women
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/category/kids"
+							className={`${path == "/category/kids" ? "active" : ""}`}
+							onClick={() => setShowMenu((prev) => !prev)}
+						>
+							Kids
+						</Link>
+					</li>
+				</ul>
+			</div>
 		</>
 	);
 };
