@@ -2,7 +2,7 @@
 
 button {
 	&.filter-no-mobile {
-		display: flex;
+		display: none;
 		justify-content: center;
 		align-items: center;
 		background-color: transparent;
@@ -10,11 +10,6 @@ button {
 		font-size: 1rem;
 		max-width: 100px;
 	}
-}
-
-.filter-no-mobile,
-.filter-no-mobile-text {
-	display: none;
 }
 
 aside {
@@ -128,6 +123,17 @@ aside {
 	}
 	.category-item-container {
 		justify-content: center;
+	}
+
+	.filter-no-mobile,
+	.filter-no-mobile-text {
+		display: none;
+	}
+
+	button {
+		&.filter-no-mobile {
+			display: flex;
+		}
 	}
 
 	.filter-no-mobile.show {
