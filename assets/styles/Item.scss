@@ -127,3 +127,21 @@
 		place-items: center;
 	}
 }
+
+@media only screen and (max-width: 450px) {
+	.item-container {
+		.item-image {
+			width: 300px !important;
+			height: 400px !important;
+		}
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.item-container {
+		.item-image {
+			width: 250px !important;
+			height: 350px !important;
+		}
+	}
+}
