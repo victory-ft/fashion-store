@@ -93,7 +93,7 @@ nav {
 	.mobile-nav {
 		position: fixed;
 		top: 55px;
-		height: 95%;
+		height: 97%;
 		width: 100%;
 		background-color: #fff;
 		z-index: 99;
@@ -110,9 +110,10 @@ nav {
 			align-items: flex-start;
 			flex-direction: column;
 			height: 100%;
+			padding-left: 0;
 
 			li {
-				margin: 40px 0;
+				margin: 40px 0 40px 40px;
 				list-style: none;
 
 				a {
@@ -128,6 +129,17 @@ nav {
 					&:hover {
 						box-shadow: inset 200px 0 0 0 $secondary-bg-color;
 						color: white;
+					}
+				}
+
+				&:last-child {
+					margin-top: auto;
+					width: calc(100% - 40px);
+					background-color: $secondary-bg-color;
+					margin-left: 0;
+					padding: 20px;
+					a {
+						color: #fff;
 					}
 				}
 			}

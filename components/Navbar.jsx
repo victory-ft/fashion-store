@@ -172,7 +172,19 @@ const Navbar = () => {
 							Kids
 						</Link>
 					</li>
+					<li>
+						<Link
+							href="/profile"
+							className={`${path == "/category/kids" ? "active" : ""}`}
+							onClick={() => setShowMenu((prev) => !prev)}
+						>
+							Profile
+						</Link>
+					</li>
 				</ul>
+				{/* <div className="account-nav">
+					<Link href="/profile"> Account</Link>
+				</div> */}
 			</div>
 		</>
 	);
