@@ -29,26 +29,26 @@ const Navbar = () => {
 		setIsSearchOpen(false);
 	};
 
-	useEffect(() => {
-		if (!showMenu) {
-			// Function to handle scroll events
-			const handleScroll = () => {
-				const currentScrollPos = window.scrollY;
-				if (prevScrollPos > currentScrollPos) {
-					setTop(0); // Show navbar
-				} else {
-					setTop(-100); // Hide navbar
-				}
-				setPrevScrollPos(currentScrollPos);
-			};
-			// Add scroll event listener when the component mounts
-			window.addEventListener("scroll", handleScroll);
-			// Clean up by removing the event listener when the component unmounts
-			return () => {
-				window.removeEventListener("scroll", handleScroll);
-			};
-		}
-	}, [prevScrollPos, showMenu]);
+	// useEffect(() => {
+	// 	if (!showMenu) {
+	// 		// Function to handle scroll events
+	// 		const handleScroll = () => {
+	// 			const currentScrollPos = window.scrollY;
+	// 			if (prevScrollPos > currentScrollPos) {
+	// 				setTop(0); // Show navbar
+	// 			} else {
+	// 				setTop(-100); // Hide navbar
+	// 			}
+	// 			setPrevScrollPos(currentScrollPos);
+	// 		};
+	// 		// Add scroll event listener when the component mounts
+	// 		window.addEventListener("scroll", handleScroll);
+	// 		// Clean up by removing the event listener when the component unmounts
+	// 		return () => {
+	// 			window.removeEventListener("scroll", handleScroll);
+	// 		};
+	// 	}
+	// }, [prevScrollPos, showMenu]);
 
 	const navbarStyle = {
 		top: `${top}px`,

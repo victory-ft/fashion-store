@@ -11,8 +11,8 @@ const CartPage = () => {
 			<h1>Your Cart</h1>
 			<div className="cart-items">
 				<h2 className="cart-header">Product</h2>
-				<h2 className="cart-header">Quantity</h2>
-				<h2 className="cart-header">Total</h2>
+				<h2 className="cart-header no-mobile-cart">Quantity</h2>
+				<h2 className="cart-header total">Total</h2>
 				<h2 className="cart-header"> </h2>
 			</div>
 			<CartItem
@@ -39,6 +39,14 @@ const CartPage = () => {
 					size: "Small",
 				}}
 			/>
+
+			<div className="total-price">
+				<div className="subtotal">
+					<h2>Subtotal:</h2>
+					<h2>$99.98 CAD</h2>
+				</div>
+				<button className="checkout">Checkout</button>
+			</div>
 		</div>
 	);
 };
