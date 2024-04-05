@@ -10,7 +10,7 @@ const CartPage = () => {
 		<div className="cart-container">
 			<h1>Your Cart</h1>
 			<div className="cart-items">
-				<h2 className="cart-header">Product</h2>
+				<h2 className="cart-header product">Product</h2>
 				<h2 className="cart-header no-mobile-cart">Quantity</h2>
 				<h2 className="cart-header total">Total</h2>
 				<h2 className="cart-header"> </h2>

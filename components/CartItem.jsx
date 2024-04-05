@@ -46,6 +46,7 @@ const CartItem = ({ image, info }) => {
 			<div className="cart-item total">${total} CAD</div>
 			<div className="cart-item delete">
 				<button>
+					<span className="mobile-only-cart">Remove</span>
 					<Image
 						src={deleteBin}
 						height={0}
