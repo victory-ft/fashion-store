@@ -127,6 +127,7 @@ const Navbar = () => {
 					<button
 						onClick={() => {
 							router.push("/cart");
+							setShowMenu(false);
 						}}
 					>
 						<Image
