@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import ItemCard from "@/components/ItemCard";
 import headerImg from "@/public/images/header.png";
@@ -8,6 +10,8 @@ import child from "@/public/images/child1.png";
 import "@/assets/styles/Index.scss";
 
 export default function Home() {
+	const router = useRouter();
+
 	return (
 		<div className="home">
 			<div className="header-section">
@@ -19,7 +23,7 @@ export default function Home() {
 						We curate a constantly evolving collection, so you can always find
 						the latest looks to elevate your style.
 					</p>
-					<button>Shop Now</button>
+					<button onClick={() => router.push("/category/all")}>Shop Now</button>
 				</div>
 				<Image src={headerImg} alt="person" className="header-img" priority />
 			</div>
