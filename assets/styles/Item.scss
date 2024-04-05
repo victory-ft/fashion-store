@@ -24,6 +24,7 @@
 	h2 {
 		margin-top: 5px;
 	}
+	margin-left: 20px;
 }
 
 .size-select {
@@ -112,4 +113,17 @@
 	width: 80%;
 	font-size: 1.2rem;
 	line-height: 1.5;
+}
+
+@media only screen and (max-width: 1050px) {
+	.product-details {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	.item-container {
+		grid-template-columns: 1fr;
+		place-items: center;
+	}
 }
