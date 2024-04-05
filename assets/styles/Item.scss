@@ -37,6 +37,11 @@
 		border: 2px solid $section-bg-color;
 		color: #fff;
 		width: 50px;
+		transition: transform 0.1s ease-in-out;
+
+		&:hover {
+			transform: scale(1.1);
+		}
 
 		&.active {
 			background-color: #fff;
@@ -97,6 +102,10 @@
 	border-radius: 10px;
 	border: none;
 	display: inline-block;
+	transition: transform 0.2s ease-in-out;
+	&:hover {
+		transform: scale(1.2);
+	}
 }
 
 .product-details {

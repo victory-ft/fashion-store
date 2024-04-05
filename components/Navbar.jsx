@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import SearchModal from "@/components/SearchModal";
+import menu from "@/assets/icons/menu.svg";
 import searchIcon from "@/assets/icons/search.svg";
 import profileIcon from "@/assets/icons/user.svg";
 import cart from "@/assets/icons/shopping-cart.svg";
@@ -53,6 +54,14 @@ const Navbar = () => {
 		<>
 			{isSearchOpen && <SearchModal closeSearchModal={closeSearchModal} />}
 			<nav style={navbarStyle}>
+				<Image
+					src={menu}
+					height={0}
+					width={0}
+					alt="menu"
+					className="mobile-only"
+					style={{ width: "30px", height: "30px" }}
+				/>
 				<Link href="/" className="logo-name">
 					FASHION
 				</Link>
@@ -60,7 +69,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							href="/category/men"
-							className={path == "/category/men" ? "active" : ""}
+							className={`no-mobile ${path == "/category/men" ? "active" : ""}`}
 						>
 							Men
 						</Link>
@@ -68,7 +77,9 @@ const Navbar = () => {
 					<li>
 						<Link
 							href="/category/women"
-							className={path == "/category/women" ? "active" : ""}
+							className={`no-mobile ${
+								path == "/category/women" ? "active" : ""
+							}`}
 						>
 							Women
 						</Link>
@@ -76,7 +87,9 @@ const Navbar = () => {
 					<li>
 						<Link
 							href="/category/kids"
-							className={path == "/category/kids" ? "active" : ""}
+							className={`no-mobile ${
+								path == "/category/kids" ? "active" : ""
+							}`}
 						>
 							Kids
 						</Link>
@@ -94,6 +107,7 @@ const Navbar = () => {
 						/>
 					</button>
 					<button
+						className="no-mobile"
 						onClick={() => {
 							router.push("/profile");
 						}}

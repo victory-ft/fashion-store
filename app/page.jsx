@@ -9,7 +9,7 @@ import "@/assets/styles/Index.scss";
 
 export default function Home() {
 	return (
-		<>
+		<div className="home">
 			<div className="header-section">
 				<div className="left">
 					<h1 className="main-header header-section-header">
@@ -58,6 +58,6 @@ export default function Home() {
 					</p>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
