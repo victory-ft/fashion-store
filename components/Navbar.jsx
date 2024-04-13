@@ -163,6 +163,7 @@ const Navbar = () => {
 						<Link
 							href="/category/clothing"
 							className={`${path == "/category/clothing" ? "active" : ""}`}
+							onClick={() => setShowMenu(false)}
 						>
 							Clothing
 						</Link>
@@ -171,6 +172,7 @@ const Navbar = () => {
 						<Link
 							href="/category/shoes"
 							className={`${path == "/category/shoes" ? "active" : ""}`}
+							onClick={() => setShowMenu(false)}
 						>
 							Shoes
 						</Link>
@@ -179,6 +181,7 @@ const Navbar = () => {
 						<Link
 							href="/category/bags"
 							className={`${path == "/category/bags" ? "active" : ""}`}
+							onClick={() => setShowMenu(false)}
 						>
 							Bags
 						</Link>
