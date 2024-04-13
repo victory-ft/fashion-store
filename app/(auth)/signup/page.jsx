@@ -10,6 +10,7 @@ const SignUpPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirm_password, setConfirmPassword] = useState("");
+	const [phone_number, setPhone] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 
@@ -103,6 +104,19 @@ const SignUpPage = () => {
 						/>
 						<div className="underline"></div>
 						<label htmlFor="confirm_password">Confirm Password</label>
+					</div>
+				</div>
+				<div className="form-row">
+					<div className="input-data">
+						<input
+							type="text"
+							name="phone"
+							id="phone"
+							onChange={(e) => setPhone(e.target.value)}
+							required
+						/>
+						<div className="underline"></div>
+						<label htmlFor="fullname">Phone Number</label>
 					</div>
 				</div>
 				<button className="login" disabled={loading}>
