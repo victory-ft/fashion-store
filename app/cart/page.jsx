@@ -4,9 +4,6 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import CartItem from "@/components/CartItem";
-import man from "@/public/images/man3.png";
-import woman from "@/public/images/woman1.png";
-import child from "@/public/images/child1.png";
 import LoadingPage from "@/components/PageLoading";
 
 import "@/assets/styles/Cart.scss";
@@ -15,6 +12,7 @@ const CartPage = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [cart, setCart] = useState("");
+	const [total, setTotal] = useState("");
 	const [error, setError] = useState("");
 
 	const router = useRouter();
@@ -38,6 +36,9 @@ const CartPage = () => {
 					const res = await response.json();
 					console.log(res);
 					setCart(res);
+					setTotal(
+						res.reduce((accum, item) => accum + item.quantity * item.price, 0),
+					);
 				}
 			} catch (error) {
 				setError("An error occurred, please try again.");
@@ -105,6 +106,7 @@ const CartPage = () => {
 										<h2 className="cart-header total">Total</h2>
 										<h2 className="cart-header"> </h2>
 									</div>
+
 									{cart.map((item) => {
 										return (
 											<CartItem
@@ -118,16 +120,25 @@ const CartPage = () => {
 													quantity: item.quantity,
 													size: item.size || "None",
 												}}
+												isOrder={false}
 												removeFromCart={removeFromCart}
 											/>
 										);
 									})}
 									<div className="total-price">
+										{}
 										<div className="subtotal">
 											<h2>Subtotal:</h2>
-											<h2>$99.98 CAD</h2>
+											<h2>${total} CAD</h2>
 										</div>
-										<button className="checkout">Checkout</button>
+										<button
+											className="checkout"
+											onClick={() => {
+												router.push(`/cart/checkout?price=${total}`);
+											}}
+										>
+											Checkout
+										</button>
 									</div>
 								</>
 							) : (

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import deleteBin from "@/assets/icons/delete-bin.svg";
 
-const CartItem = ({ image, info, removeFromCart }) => {
+const CartItem = ({ image, info, removeFromCart, isOrder }) => {
 	const [quantity, setQuantity] = useState(info.quantity);
 	const total = info.price * quantity;
 
@@ -40,23 +40,25 @@ const CartItem = ({ image, info, removeFromCart }) => {
 				</div>
 			</div>
 			<div className="cart-item quantity">
-				<button onClick={() => changeQuantity("minus")}> &minus; </button>
+				{/* <button onClick={() => changeQuantity("minus")}> &minus; </button> */}
 				<p>{quantity}</p>
-				<button onClick={() => changeQuantity("add")}> &#43; </button>
+				{/* <button onClick={() => changeQuantity("add")}> &#43; </button> */}
 			</div>
 			<div className="cart-item total">${total} CAD</div>
-			<div className="cart-item delete">
-				<button onClick={() => removeFromCart(info.id)}>
-					<span className="mobile-only-cart">Remove</span>
-					<Image
-						src={deleteBin}
-						height={0}
-						width={0}
-						alt="delete"
-						style={{ width: "20px", height: "20px" }}
-					/>
-				</button>
-			</div>
+			{!isOrder && (
+				<div className="cart-item delete">
+					<button onClick={() => removeFromCart(info.id)}>
+						<span className="mobile-only-cart">Remove</span>
+						<Image
+							src={deleteBin}
+							height={0}
+							width={0}
+							alt="delete"
+							style={{ width: "20px", height: "20px" }}
+						/>
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
