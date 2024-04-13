@@ -1,21 +1,21 @@
 import React from "react";
 import "@/assets/styles/components/AddressForm.scss";
 
-const AddressForm = ({ edit, toggleAddressForm, toggleEditAddressForm }) => {
+const AddressForm = ({ toggleEditAddressForm }) => {
 	return (
 		<div className="address-form-container">
-			{edit ? <h2>Edit address</h2> : <h2>Add a new address</h2>}
+			<h2>Edit address</h2>
 			<form action="#">
 				<div className="form-row">
-					<div className="input-data">
+					{/* <div className="input-data">
 						<input type="text" name="first-name" id="first-name" required />
 						<div className="underline"></div>
 						<label htmlFor="first-name">First Name</label>
-					</div>
+					</div> */}
 					<div className="input-data">
-						<input type="text" name="last-name" id="last-name" required />
+						<input type="text" name="full-name" id="full-name" required />
 						<div className="underline"></div>
-						<label htmlFor="last-name">Last Name</label>
+						<label htmlFor="full-name">Full Name</label>
 					</div>
 				</div>
 				<div className="form-row">
@@ -61,13 +61,10 @@ const AddressForm = ({ edit, toggleAddressForm, toggleEditAddressForm }) => {
 					</div>
 				</div>
 				<button type="submit" className="address-btn">
-					{edit ? "Update Address" : "Add address"}
+					Update Address
 				</button>
 			</form>
-			<button
-				className="logout"
-				onClick={edit ? toggleEditAddressForm : toggleAddressForm}
-			>
+			<button className="logout" onClick={toggleEditAddressForm}>
 				Cancel
 			</button>
 		</div>

@@ -1,26 +1,94 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import SearchFilter from "@/components/SearchFilter";
 import ItemCard from "@/components/ItemCard";
-import man from "@/public/images/man3.png";
-import man2 from "@/public/images/man2.png";
-import man3 from "@/public/images/man1.png";
+import LoadingPage from "@/components/PageLoading";
 import "@/assets/styles/Category.scss";
 
 const AllCategory = () => {
+	const [products, setProducts] = useState([]);
+	const [displayedProducts, setDisplayedProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState("");
+
+	const [filter, setFilter] = useState({
+		maxPrice: "",
+		minPrice: "",
+	});
+
+	function setFilters(min, max) {
+		setFilter({ maxPrice: max, minPrice: min });
+	}
+
+	function applyFilter() {
+		if (products.length !== 0) {
+			const check = products.filter((product) => {
+				return (
+					product.price <= filter.maxPrice && product.price >= filter.minPrice
+				);
+			});
+			setDisplayedProducts(check);
+			console.log(check);
+		}
+	}
+
+	async function getProducts() {
+		try {
+			const response = await fetch(
+				"https://fashion-ecommerce-backend.onrender.com/products/all/",
+				{
+					method: "GET",
+				},
+			);
+			const res = await response.json();
+			// console.log(res);
+			setProducts(res);
+			setDisplayedProducts(res);
+		} catch (error) {
+			setError("An error occurred, please try again.");
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		getProducts();
+	}, []);
+
+	useEffect(() => {
+		if (products.length && filter.maxPrice && filter.minPrice) {
+			applyFilter();
+		}
+	}, [filter, products]);
+
 	return (
 		<div className="category-container">
-			<SearchFilter />
-			<div className="category-item-container">
-				<ItemCard image={man} name="Men's Blue Button Shirt" price="20 CAD" />
-				<ItemCard image={man2} name="Men's Jean Pants" price="25 CAD" />
-				<ItemCard image={man} name="Men's Blue Button Shirt" price="20 CAD" />
-				<ItemCard image={man2} name="Men's Jean Pants" price="25 CAD" />
-				<ItemCard image={man3} name="Men's Blue Button Shirt" price="10 CAD" />
-				<ItemCard image={man} name="Men's Blue Button Shirt" price="20 CAD" />
-				<ItemCard image={man3} name="Men's Blue Button Shirt" price="10 CAD" />
-				<ItemCard image={man2} name="Men's Jean Pants" price="25 CAD" />
-				<ItemCard image={man3} name="Men's Blue Button Shirt" price="10 CAD" />
-			</div>
+			{loading ? (
+				<LoadingPage />
+			) : error ? (
+				<div className="category-item-container">
+					<p className="error-big">{error}</p>
+				</div>
+			) : (
+				<>
+					<SearchFilter setFilters={setFilters} />
+
+					<div className="category-item-container">
+						{products.length !== 0 &&
+							displayedProducts.map((product) => {
+								return (
+									<ItemCard
+										key={product.id}
+										id={product.id}
+										image={product.image}
+										name={product.title}
+										price={`${product.price} CAD`}
+									/>
+								);
+							})}
+					</div>
+				</>
+			)}
 		</div>
 	);
 };

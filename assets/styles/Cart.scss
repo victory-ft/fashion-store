@@ -10,6 +10,21 @@
 	}
 }
 
+.continue-shopping {
+	padding: 15px 40px;
+	border: none;
+	background-color: $secondary-bg-color;
+	color: #fff;
+	font-size: 1rem;
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 30px -10px;
+}
+
+.center-empty-cart {
+	display: grid;
+	place-content: center;
+}
+
 .cart-items {
 	display: grid;
 	grid-template-columns: 3fr 1fr 1fr 0.5fr;

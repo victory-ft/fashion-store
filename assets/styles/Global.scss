@@ -33,3 +33,13 @@ body {
 button {
 	cursor: pointer;
 }
+
+.error-auth {
+	font-size: 0.9rem;
+	color: $red-bg-color;
+}
+
+.error-big {
+	font-size: 1.2rem;
+	color: $red-bg-color;
+}

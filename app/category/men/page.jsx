@@ -9,7 +9,7 @@ import "@/assets/styles/Category.scss";
 const MenCategory = () => {
 	return (
 		<div className="category-container">
-			<SearchFilter />
+			{/* <SearchFilter /> */}
 			<div className="category-item-container">
 				<ItemCard image={man} name="Men's Blue Button Shirt" price="20 CAD" />
 				<ItemCard image={man2} name="Men's Jean Pants" price="25 CAD" />

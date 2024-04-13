@@ -76,6 +76,30 @@ const Navbar = () => {
 				<ul className="links no-mobile">
 					<li>
 						<Link
+							href="/category/clothing"
+							className={`${path == "/category/clothing" ? "active" : ""}`}
+						>
+							Clothing
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/category/shoes"
+							className={`${path == "/category/shoes" ? "active" : ""}`}
+						>
+							Shoes
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/category/bags"
+							className={`${path == "/category/bags" ? "active" : ""}`}
+						>
+							Bags
+						</Link>
+					</li>
+					<li>
+						<Link
 							href="/category/men"
 							className={`${path == "/category/men" ? "active" : ""}`}
 						>
@@ -88,14 +112,6 @@ const Navbar = () => {
 							className={`${path == "/category/women" ? "active" : ""}`}
 						>
 							Women
-						</Link>
-					</li>
-					<li>
-						<Link
-							href="/category/kids"
-							className={`${path == "/category/kids" ? "active" : ""}`}
-						>
-							Kids
 						</Link>
 					</li>
 				</ul>
@@ -145,6 +161,30 @@ const Navbar = () => {
 				<ul className="links">
 					<li>
 						<Link
+							href="/category/clothing"
+							className={`${path == "/category/clothing" ? "active" : ""}`}
+						>
+							Clothing
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/category/shoes"
+							className={`${path == "/category/shoes" ? "active" : ""}`}
+						>
+							Shoes
+						</Link>
+					</li>
+					<li>
+						<Link
+							href="/category/bags"
+							className={`${path == "/category/bags" ? "active" : ""}`}
+						>
+							Bags
+						</Link>
+					</li>
+					<li>
+						<Link
 							href="/category/men"
 							className={`${path == "/category/men" ? "active" : ""}`}
 							onClick={() => setShowMenu(false)}
@@ -161,15 +201,7 @@ const Navbar = () => {
 							Women
 						</Link>
 					</li>
-					<li>
-						<Link
-							href="/category/kids"
-							className={`${path == "/category/kids" ? "active" : ""}`}
-							onClick={() => setShowMenu(false)}
-						>
-							Kids
-						</Link>
-					</li>
+
 					<li>
 						<Link
 							href="/profile"

@@ -84,9 +84,11 @@ aside {
 }
 .category-item-container {
 	display: flex;
-	justify-content: flex-start;
+	justify-content: start;
 	align-items: center;
 	flex-wrap: wrap;
+	margin: 10px;
+	width: calc(100% - 20px);
 }
 
 .filter-options {

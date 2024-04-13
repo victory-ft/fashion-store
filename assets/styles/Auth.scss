@@ -5,8 +5,13 @@
 	display: grid;
 	place-content: center;
 	align-items: start;
-	min-height: 80vh;
+	min-height: 90vh;
 	// max-width: 600px;
+}
+
+.error-auth {
+	font-size: 0.9rem;
+	color: $red-bg-color;
 }
 
 form {
@@ -91,4 +96,12 @@ form {
 	border: none;
 	background-color: $secondary-bg-color;
 	color: #fff;
+}
+
+@media only screen and (max-width: 450px) {
+	form {
+		.form-row {
+			width: 80vw !important;
+		}
+	}
 }
