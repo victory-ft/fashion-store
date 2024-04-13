@@ -89,6 +89,7 @@ const ProfilePage = () => {
 							</button>
 							<br />
 							<h2>Order History</h2>
+							<p className="no-address">No orders </p>
 							<button className="logout" onClick={logout}>
 								Log Out
 							</button>

@@ -50,6 +50,33 @@ const CartPage = () => {
 		}
 	}
 
+	async function removeFromCart(id) {
+		const token = Cookies.get("token");
+		try {
+			const response = await fetch(
+				"https://fashion-ecommerce-backend.onrender.com/products/remove-order/",
+				{
+					method: "POST",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({ pk: id }),
+				},
+			);
+
+			if (response.ok) {
+				getCart();
+			}
+		} catch (error) {
+			// setError("An error occurred, please try again.");
+			console.log(error);
+		} finally {
+			setLoading(false);
+		}
+	}
+
 	useEffect(() => {
 		getCart();
 	}, []);
@@ -71,7 +98,6 @@ const CartPage = () => {
 						<>
 							{cart.length ? (
 								<>
-									{" "}
 									<h1>Your Cart</h1>
 									<div className="cart-items">
 										<h2 className="cart-header product">Product</h2>
@@ -79,30 +105,22 @@ const CartPage = () => {
 										<h2 className="cart-header total">Total</h2>
 										<h2 className="cart-header"> </h2>
 									</div>
-									<CartItem
-										image={man}
-										info={{
-											name: "Men's Blue Button Shirt",
-											price: 20,
-											size: "Large",
-										}}
-									/>
-									<CartItem
-										image={woman}
-										info={{
-											name: "Women's Polkadot Shirt",
-											price: 25,
-											size: "Medium",
-										}}
-									/>
-									<CartItem
-										image={child}
-										info={{
-											name: "Children Blue Jeans",
-											price: 10,
-											size: "Small",
-										}}
-									/>
+									{cart.map((item) => {
+										return (
+											<CartItem
+												key={item.id}
+												image={item.image}
+												info={{
+													name: item.product,
+													id: item.id,
+													price: item.price,
+													quantity: item.quantity,
+													size: item.size || "None",
+												}}
+												removeFromCart={removeFromCart}
+											/>
+										);
+									})}
 									<div className="total-price">
 										<div className="subtotal">
 											<h2>Subtotal:</h2>

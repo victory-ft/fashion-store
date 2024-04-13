@@ -13,6 +13,7 @@ const AddressPage = () => {
 
 	const toggleEditAddressForm = () => {
 		showEditAddressForm((prev) => !prev);
+		setUpdateError("");
 	};
 
 	const router = useRouter();
@@ -64,22 +65,20 @@ const AddressPage = () => {
 		phone_number,
 		event,
 	) {
-		event.preventDefault;
+		event.preventDefault();
 		const token = Cookies.get("token");
-		console.log(
-			"address",
-			address,
-			"city",
-			city,
-			"fullname",
-			fullname,
-			"province",
-			province,
-			"phone_number",
-			phone_number,
-		);
 		setUpdateError("");
 		try {
+			const requestBody = {};
+
+			// Conditionally add parameters only if they are not empty
+			if (address) requestBody.address = address;
+			if (fullname) requestBody.fullname = fullname;
+			if (city) requestBody.city = city;
+			if (province) requestBody.province = province;
+			if (phone_number) requestBody.phone_number = phone_number;
+			console.log(requestBody);
+
 			setUpdateLoading(true);
 			const response = await fetch(
 				"https://fashion-ecommerce-backend.onrender.com/account/update-profile/",
@@ -90,23 +89,19 @@ const AddressPage = () => {
 						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
-					body: JSON.stringify({
-						address,
-						city,
-						fullname,
-						province,
-						phone_number,
-					}),
+					body: JSON.stringify(requestBody),
 				},
 			);
-
+			// const res = response.json();
 			if (response.ok) {
 				router.push("/profile");
 			}
 			if (!response.ok) {
+				console.log(response.json());
 				setUpdateError("An error occurred, please try again.");
 			}
 		} catch (error) {
+			console.log(error);
 			setUpdateError("An error occurred, please try again.");
 		} finally {
 			setUpdateLoading(false);

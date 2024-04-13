@@ -1,26 +1,98 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import SearchFilter from "@/components/SearchFilter";
 import ItemCard from "@/components/ItemCard";
-import woman from "@/public/images/woman3.png";
-import woman2 from "@/public/images/woman2.png";
-import woman3 from "@/public/images/woman1.png";
+import LoadingPage from "@/components/PageLoading";
 import "@/assets/styles/Category.scss";
 
 const WomenCategory = () => {
+	const [products, setProducts] = useState([]);
+	const [displayedProducts, setDisplayedProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState("");
+
+	const [filter, setFilter] = useState({
+		maxPrice: "",
+		minPrice: "",
+	});
+
+	function setFilters(min, max) {
+		setFilter({ maxPrice: max, minPrice: min });
+	}
+
+	function resetFilter() {
+		setDisplayedProducts(products);
+	}
+
+	function applyFilter() {
+		if (products.length !== 0) {
+			const check = products.filter((product) => {
+				return (
+					product.price <= filter.maxPrice && product.price >= filter.minPrice
+				);
+			});
+			setDisplayedProducts(check);
+			console.log(check);
+		}
+	}
+
+	async function getProducts() {
+		try {
+			const response = await fetch(
+				"https://fashion-ecommerce-backend.onrender.com/products/all/gender/F/",
+				{
+					method: "GET",
+				},
+			);
+			const res = await response.json();
+			// console.log(res);
+			setProducts(res);
+			setDisplayedProducts(res);
+		} catch (error) {
+			setError("An error occurred, please try again.");
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		getProducts();
+	}, []);
+
+	useEffect(() => {
+		if (products.length && filter.maxPrice && filter.minPrice) {
+			applyFilter();
+		}
+	}, [filter, products]);
+
 	return (
 		<div className="category-container">
-			{/* <SearchFilter /> */}
-			<div className="category-item-container">
-				<ItemCard image={woman} name="Women's Dress" price="20 CAD" />
-				<ItemCard image={woman2} name="Women's Flower Dress" price="25 CAD" />
-				<ItemCard image={woman} name="Women's Dress" price="20 CAD" />
-				<ItemCard image={woman2} name="Women's Flower Dress" price="25 CAD" />
-				<ItemCard image={woman3} name="Women's Polkadot shirt" price="10 CAD" />
-				<ItemCard image={woman} name="Women's Dress" />
-				<ItemCard image={woman3} name="Women's Polkadot shirt" price="10 CAD" />
-				<ItemCard image={woman2} name="Women's Flower Dress" price="25 CAD" />
-				<ItemCard image={woman3} name="Women's Polkadot shirt" price="10 CAD" />
-			</div>
+			{loading ? (
+				<LoadingPage />
+			) : error ? (
+				<div className="category-item-container">
+					<p className="error-big">{error}</p>
+				</div>
+			) : (
+				<>
+					<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
+
+					<div className="category-item-container">
+						{products.length !== 0 &&
+							displayedProducts.map((product) => {
+								return (
+									<ItemCard
+										key={product.id}
+										id={product.id}
+										image={product.image}
+										name={product.title}
+										price={`${product.price} CAD`}
+									/>
+								);
+							})}
+					</div>
+				</>
+			)}
 		</div>
 	);
 };

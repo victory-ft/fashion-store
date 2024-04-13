@@ -39,7 +39,7 @@ const BagsCategory = () => {
 	async function getProducts() {
 		try {
 			const response = await fetch(
-				"https://fashion-ecommerce-backend.onrender.com/products/all/bag",
+				"https://fashion-ecommerce-backend.onrender.com/products/all/Bag",
 				{
 					method: "GET",
 				},

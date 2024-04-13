@@ -78,7 +78,7 @@ const ItemPage = () => {
 						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
-					body: JSON.stringify({ pk: id, quantity }),
+					body: JSON.stringify({ pk: id, quantity, size: selectedSize }),
 				},
 			);
 			if (response.ok) {

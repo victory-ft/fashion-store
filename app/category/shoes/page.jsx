@@ -39,7 +39,7 @@ const ShoesCategory = () => {
 	async function getProducts() {
 		try {
 			const response = await fetch(
-				"https://fashion-ecommerce-backend.onrender.com/products/all/shoe",
+				"https://fashion-ecommerce-backend.onrender.com/products/all/Shoe",
 				{
 					method: "GET",
 				},
