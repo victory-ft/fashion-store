@@ -113,6 +113,7 @@ const CartPage = () => {
 												info={{
 													name: item.product,
 													id: item.id,
+													pk: item.product_pk,
 													price: item.price,
 													quantity: item.quantity,
 													size: item.size || "None",

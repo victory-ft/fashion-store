@@ -32,7 +32,7 @@ const CartItem = ({ image, info, removeFromCart }) => {
 					style={{ width: "150px", height: "200px" }}
 				/>
 				<div>
-					<Link href={`/item/${info.id}`} className="product-name">
+					<Link href={`/item/${info.pk}`} className="product-name">
 						{info.name}
 					</Link>
 					<p>Price: ${info.price} CAD</p>
