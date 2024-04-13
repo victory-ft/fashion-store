@@ -29,7 +29,13 @@ const SignUpPage = () => {
 						Accept: "application/json",
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({ email, password, fullname, confirm_password }),
+					body: JSON.stringify({
+						email,
+						password,
+						fullname,
+						confirm_password,
+						phone_number,
+					}),
 				},
 			);
 			if (response.ok) {
