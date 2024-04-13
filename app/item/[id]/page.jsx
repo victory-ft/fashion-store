@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import LoadingPage from "@/components/PageLoading";
 import "@/assets/styles/Item.scss";
 import Link from "next/link";
+import Loading from "@/components/Loading";
 
 const ItemPage = () => {
 	const { id } = useParams();
@@ -56,6 +57,40 @@ const ItemPage = () => {
 			setError("An error occurred, please try again.");
 		} finally {
 			setLoading(false);
+		}
+	}
+
+	const [adding, setAdding] = useState(false);
+	const [added, setAdded] = useState(false);
+	const [addFail, setAddFail] = useState(false);
+
+	async function addToCart() {
+		const token = Cookies.get("token");
+		try {
+			setAdding(true);
+			setAddFail(false);
+			const response = await fetch(
+				`https://fashion-ecommerce-backend.onrender.com/products/add-item/`,
+				{
+					method: "POST",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({ pk: id, quantity }),
+				},
+			);
+			if (response.ok) {
+				setAdded(true);
+			}
+			if (!response.ok) {
+				setAddFail(true);
+			}
+		} catch (error) {
+			setAddFail(true);
+		} finally {
+			setAdding(false);
 		}
 	}
 
@@ -150,7 +185,26 @@ const ItemPage = () => {
 						<br />
 
 						{isLoggedIn ? (
-							<button className="add-to-cart">Add to cart</button>
+							<>
+								<button
+									className="add-to-cart"
+									disabled={adding}
+									onClick={addToCart}
+								>
+									{adding ? (
+										<Loading />
+									) : added ? (
+										"Added successfully"
+									) : (
+										"Add to cart"
+									)}
+								</button>
+								{addFail && (
+									<p className="error-auth">
+										An error occurred, please try again.
+									</p>
+								)}
+							</>
 						) : (
 							<p className="product-details">
 								Please <Link href="/login">login</Link> to add item to cart

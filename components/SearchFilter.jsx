@@ -4,7 +4,7 @@ import Image from "next/image";
 import arrow from "@/assets/icons/arrow-down.svg";
 import filterIcon from "@/assets/icons/filter.svg";
 
-const SearchFilter = ({ setFilters }) => {
+const SearchFilter = ({ setFilters, resetFilter }) => {
 	const [showPrice, setShowPrice] = useState(false);
 	const [showGender, setShowGender] = useState(false);
 	const [showSize, setShowSize] = useState(false);
@@ -15,7 +15,6 @@ const SearchFilter = ({ setFilters }) => {
 
 	function confirmFilter() {
 		setError("");
-		console.log(maxPrice, minPrice);
 		if (maxPrice && minPrice) {
 			setFilters(minPrice, maxPrice);
 		}
@@ -80,6 +79,7 @@ const SearchFilter = ({ setFilters }) => {
 							name="min"
 							id="min"
 							className="price-input"
+							value={minPrice || ""}
 							onChange={(e) => setMinPrice(e.target.value)}
 						/>
 						<label htmlFor="min">Min</label>
@@ -88,6 +88,7 @@ const SearchFilter = ({ setFilters }) => {
 							name="max"
 							id="max"
 							className="price-input"
+							value={maxPrice || ""}
 							onChange={(e) => setMaxPrice(e.target.value)}
 						/>
 						<label htmlFor="max">Max</label>
@@ -146,6 +147,17 @@ const SearchFilter = ({ setFilters }) => {
 				</div> */}
 				<button className="apply-filter" onClick={confirmFilter}>
 					Apply Filters
+				</button>
+				<br />
+				<button
+					className="apply-filter"
+					onClick={() => {
+						resetFilter();
+						setMaxPrice("");
+						setMinPrice("");
+					}}
+				>
+					Reset Filters
 				</button>
 			</aside>
 		</>

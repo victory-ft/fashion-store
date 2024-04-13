@@ -7,9 +7,10 @@ const Footer = () => {
 		<footer>
 			<div className="links">
 				<Link href="/">Home</Link>
-				<Link href="/category/men">Men</Link>
+				<Link href="/category/clothing">Clothing</Link>
+				<Link href="/category/bags">Bags</Link>
+				<Link href="/category/shoes">Shoes</Link>
 				<Link href="/category/women">Women</Link>
-				<Link href="/category/kids">kids</Link>
 				<Link href="/contact">Contact Us</Link>
 			</div>
 			<div className="copyright">

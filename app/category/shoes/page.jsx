@@ -5,7 +5,7 @@ import ItemCard from "@/components/ItemCard";
 import LoadingPage from "@/components/PageLoading";
 import "@/assets/styles/Category.scss";
 
-const AllCategory = () => {
+const ShoesCategory = () => {
 	const [products, setProducts] = useState([]);
 	const [displayedProducts, setDisplayedProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -20,6 +20,10 @@ const AllCategory = () => {
 		setFilter({ maxPrice: max, minPrice: min });
 	}
 
+	function resetFilter() {
+		setDisplayedProducts(products);
+	}
+
 	function applyFilter() {
 		if (products.length !== 0) {
 			const check = products.filter((product) => {
@@ -32,14 +36,10 @@ const AllCategory = () => {
 		}
 	}
 
-	function resetFilter() {
-		setDisplayedProducts(products);
-	}
-
 	async function getProducts() {
 		try {
 			const response = await fetch(
-				"https://fashion-ecommerce-backend.onrender.com/products/all/",
+				"https://fashion-ecommerce-backend.onrender.com/products/all/shoe",
 				{
 					method: "GET",
 				},
@@ -97,4 +97,4 @@ const AllCategory = () => {
 	);
 };
 
-export default AllCategory;
+export default ShoesCategory;
