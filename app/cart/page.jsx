@@ -45,6 +45,7 @@ const CartPage = () => {
 				setLoading(false);
 			}
 		} else {
+			setLoading(false);
 			return;
 		}
 	}
