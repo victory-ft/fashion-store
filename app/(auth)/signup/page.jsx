@@ -47,9 +47,6 @@ const SignUpPage = () => {
 			if (res.non_field_errors) {
 				setError(res.non_field_errors);
 			}
-			if (res.message) {
-				setError(res.message);
-			}
 		} catch (error) {
 			setError("An error occurred, please try again.");
 		} finally {

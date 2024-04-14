@@ -87,6 +87,19 @@ const ProfilePage = () => {
 							>
 								Edit Address
 							</button>
+							<p className="profile-info-header">Account Balance</p>
+
+							<p className="profile-info">
+								<span className="no-address">
+									${profile.account_balance} CAD
+								</span>
+							</p>
+							<button
+								className="address-btn"
+								onClick={() => router.push("/profile/topup")}
+							>
+								Top Up Account
+							</button>
 							<br />
 							<h2>Order History</h2>
 							<button
