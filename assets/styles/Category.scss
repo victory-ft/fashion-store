@@ -81,6 +81,17 @@ aside {
 	padding-top: 30px;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
+
+	&.search {
+		padding-top: 50px;
+	}
+}
+
+.search-res {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 .category-item-container {
 	display: flex;

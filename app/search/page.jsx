@@ -43,6 +43,7 @@ const AllCategory = () => {
 
 	async function getProducts() {
 		try {
+			setLoading(true);
 			const response = await fetch(
 				`https://fashion-ecommerce-backend.onrender.com/products/search/${q}/`,
 				{
@@ -62,7 +63,7 @@ const AllCategory = () => {
 
 	useEffect(() => {
 		getProducts();
-	}, []);
+	}, [q]);
 
 	useEffect(() => {
 		if (products.length && filter.maxPrice && filter.minPrice) {
@@ -71,7 +72,7 @@ const AllCategory = () => {
 	}, [filter, products]);
 
 	return (
-		<div className="category-container">
+		<div className="category-container search">
 			{loading ? (
 				<LoadingPage />
 			) : error ? (
@@ -81,9 +82,10 @@ const AllCategory = () => {
 			) : (
 				<>
 					<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
-
+					<h2 className="search-res">
+						Search results for "{decodeURIComponent(q)}"
+					</h2>
 					<div className="category-item-container">
-						<h2>Search results for "{q}"</h2>
 						{products.length !== 0 &&
 							displayedProducts.map((product) => {
 								return (
