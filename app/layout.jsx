@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import "@/assets/styles/Global.scss";
 
 export const metadata = {
-	title: "Fashion Store",
+	title: "Luxe Fashion Store",
 	description: "Shop for all your latest clothes here.",
 };
 
