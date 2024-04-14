@@ -29,7 +29,7 @@ const SearchModal = ({ closeSearchModal }) => {
 	}
 
 	function runSearch() {
-		router.push(`/search/${searchTerm}`);
+		router.push(`/search?q=${searchTerm}`);
 		closeSearchModal();
 	}
 

@@ -39,6 +39,9 @@ const CheckoutPage = () => {
 			if (response.ok) {
 				router.push("/profile/orders");
 			}
+			if (!response.ok) {
+				setError("An error occurred, please try again.");
+			}
 		} catch (error) {
 			setError("An error occurred, please try again.");
 			console.log(error);
@@ -84,7 +87,7 @@ const CheckoutPage = () => {
 					<div className="checkout-input">
 						<label htmlFor="card-expiry">Expires</label>
 						<input
-							type="text"
+							type="number"
 							name="card-expiry"
 							placeholder="02/24"
 							required

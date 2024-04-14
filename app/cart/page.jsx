@@ -5,13 +5,15 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import CartItem from "@/components/CartItem";
 import LoadingPage from "@/components/PageLoading";
-
+import Loading from "@/components/Loading";
 import "@/assets/styles/Cart.scss";
 
 const CartPage = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [loadingP, setLoadingP] = useState(true);
 	const [cart, setCart] = useState("");
+	const [address, setAddress] = useState("");
 	const [total, setTotal] = useState("");
 	const [error, setError] = useState("");
 
@@ -34,11 +36,11 @@ const CartPage = () => {
 
 				if (response.ok) {
 					const res = await response.json();
-					console.log(res);
 					setCart(res);
 					setTotal(
 						res.reduce((accum, item) => accum + item.quantity * item.price, 0),
 					);
+					getProfile();
 				}
 			} catch (error) {
 				setError("An error occurred, please try again.");
@@ -48,6 +50,31 @@ const CartPage = () => {
 		} else {
 			setLoading(false);
 			return;
+		}
+	}
+
+	async function getProfile() {
+		const token = Cookies.get("token");
+
+		try {
+			const response = await fetch(
+				"https://fashion-ecommerce-backend.onrender.com/account/user-data/",
+				{
+					method: "GET",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				},
+			);
+			if (response.ok) {
+				const res = await response.json();
+				console.log(res);
+				setAddress(res.address);
+			}
+		} catch (error) {
+			setError("An error occurred, please try again.");
+		} finally {
+			setLoadingP(false);
 		}
 	}
 
@@ -126,19 +153,30 @@ const CartPage = () => {
 										);
 									})}
 									<div className="total-price">
-										{}
 										<div className="subtotal">
 											<h2>Subtotal:</h2>
 											<h2>${total} CAD</h2>
 										</div>
-										<button
-											className="checkout"
-											onClick={() => {
-												router.push(`/cart/checkout?price=${total}`);
-											}}
-										>
-											Checkout
-										</button>
+										{loadingP ? (
+											<button className="checkout" disabled>
+												<Loading />
+											</button>
+										) : !address ? (
+											<h2>
+												Please{" "}
+												<Link href="/profile/address">add an address</Link> to
+												checkout
+											</h2>
+										) : (
+											<button
+												className="checkout"
+												onClick={() => {
+													router.push(`/cart/checkout?price=${total}`);
+												}}
+											>
+												Checkout
+											</button>
+										)}
 									</div>
 								</>
 							) : (
