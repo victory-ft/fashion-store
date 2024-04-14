@@ -16,10 +16,26 @@ const CheckoutPage = () => {
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
+	const [cardNo, setCardNo] = useState("");
+	const [cardExp, setCardExp] = useState("");
+	const [cardExp1, setCardExp1] = useState("");
+	const [cvv, setCvv] = useState("");
 
 	async function makePayment(e) {
 		e.preventDefault();
 		const token = Cookies.get("token");
+		if (cardNo.length < 15 || cardNo.length > 19) {
+			setError("Card number should be between 15 and 19 digits long");
+			return;
+		}
+		if (!cardExp || !cardExp1) {
+			setError("Please include card expiry date");
+			return;
+		}
+		if (cvv.length < 3 || cardNo.length > 3) {
+			setError("CVV should be 3 digits long");
+			return;
+		}
 		setError("");
 		try {
 			setLoading(true);
@@ -52,7 +68,7 @@ const CheckoutPage = () => {
 
 	return (
 		<div className="checkout-container">
-			<form action="#">
+			<form onSubmit={(e) => makePayment(e)}>
 				<Image
 					src="https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png"
 					height={0}
@@ -69,6 +85,7 @@ const CheckoutPage = () => {
 							name="card-number"
 							placeholder="5399 3498 0129 0393"
 							required
+							onChange={(e) => setCardNo(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -83,19 +100,37 @@ const CheckoutPage = () => {
 						/>
 					</div>
 				</div>
-				<div className="checkout-row">
-					<div className="checkout-input">
-						<label htmlFor="card-expiry">Expires</label>
+				<div className="checkout-row exp">
+					<label htmlFor="card-expiry" className="exp-la">
+						Expires
+					</label>
+					{/* <br /> */}
+					<div className="checkout-input exp">
 						<input
 							type="number"
 							name="card-expiry"
-							placeholder="02/24"
+							// placeholder="02/24"
 							required
+							onChange={(e) => setCardExp(e.target.value)}
+						/>
+						<span>/</span>
+						<input
+							type="number"
+							name="card-expiry1"
+							// placeholder="02/24"
+							required
+							onChange={(e) => setCardExp1(e.target.value)}
 						/>
 					</div>
 					<div className="checkout-input">
 						<label htmlFor="cvv">CVV/CVC</label>
-						<input type="number" name="cvv" placeholder="999" required />
+						<input
+							type="number"
+							name="cvv"
+							placeholder="999"
+							onChange={(e) => setCvv(e.target.value)}
+							required
+						/>
 					</div>
 				</div>
 				<div className="checkout-row">
@@ -112,9 +147,7 @@ const CheckoutPage = () => {
 					</div>
 				</div>
 				{error && <p className="error-big">{error}</p>}
-				<button onClick={(e) => makePayment(e)}>
-					{loading ? <Loading /> : ` Pay $${price} CAD`}
-				</button>
+				<button>{loading ? <Loading /> : ` Pay $${price} CAD`}</button>
 			</form>
 		</div>
 	);

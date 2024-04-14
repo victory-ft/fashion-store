@@ -65,6 +65,32 @@
 					opacity: 0.5;
 				}
 			}
+
+			&.exp {
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin-top: 20px;
+				width: 150px;
+				margin-right: 20%;
+				background-color: #5794e0;
+				border-radius: 10px;
+
+				span {
+					color: #fff;
+				}
+
+				input {
+					width: 100%;
+					outline: none;
+					margin-left: 0;
+					background-color: none !important;
+				}
+			}
+		}
+
+		label.exp-la {
+			color: #fff !important;
 		}
 
 		button {

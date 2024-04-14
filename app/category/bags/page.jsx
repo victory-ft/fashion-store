@@ -68,7 +68,9 @@ const BagsCategory = () => {
 	return (
 		<div className="category-container">
 			{loading ? (
-				<LoadingPage />
+				<div className="load-container">
+					<LoadingPage />
+				</div>
 			) : error ? (
 				<div className="category-item-container">
 					<p className="error-big">{error}</p>

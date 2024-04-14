@@ -148,7 +148,7 @@ const SearchFilter = ({ setFilters, resetFilter }) => {
 				<button className="apply-filter" onClick={confirmFilter}>
 					Apply Filters
 				</button>
-				<br />
+				{/* <br /> */}
 				<button
 					className="apply-filter"
 					onClick={() => {

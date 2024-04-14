@@ -74,9 +74,11 @@ const AllCategory = () => {
 	return (
 		<div className="category-container search">
 			{loading ? (
-				<LoadingPage />
+				<div className="load-container">
+					<LoadingPage />
+				</div>
 			) : error ? (
-				<div className="category-item-container">
+				<div className="load-container">
 					<p className="error-big">{error}</p>
 				</div>
 			) : (

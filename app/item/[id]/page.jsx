@@ -66,6 +66,7 @@ const ItemPage = () => {
 
 	async function addToCart() {
 		const token = Cookies.get("token");
+		// console.log(selectedSize);
 		try {
 			setAdding(true);
 			setAddFail(false);
@@ -129,13 +130,19 @@ const ItemPage = () => {
 	}, []);
 
 	return (
-		<div className="item-container">
-			{loading ? (
+		// <> </>
+		// <div className="item-container">
+		loading ? (
+			<div className="load-container">
 				<LoadingPage />
-			) : error ? (
+			</div>
+		) : error ? (
+			<div className="load-container">
 				<p className="error-big">{error}</p>
-			) : (
-				<>
+			</div>
+		) : (
+			<>
+				<div className="item-container">
 					<Image
 						src={product.image}
 						alt="woman"
@@ -219,9 +226,10 @@ const ItemPage = () => {
 							<p className="product-details">{product.description}</p>
 						</div>
 					</div>
-				</>
-			)}
-		</div>
+				</div>
+			</>
+		)
+		// </div>
 	);
 };
 
