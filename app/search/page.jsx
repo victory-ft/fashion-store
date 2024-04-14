@@ -83,7 +83,10 @@ const AllCategory = () => {
 				<>
 					<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
 					<h2 className="search-res">
-						Search results for "{decodeURIComponent(q)}"
+						{products.length === 0
+							? "No results found for"
+							: "Search results for"}{" "}
+						"{decodeURIComponent(q)}"
 					</h2>
 					<div className="category-item-container">
 						{products.length !== 0 &&
