@@ -1,9 +1,11 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import ItemCard from "@/components/ItemCard";
 import headerImg from "@/public/images/header.png";
 import mustHave from "@/public/images/musthave.png";
+import LoadingPage from "@/components/PageLoading";
 import man from "@/public/images/man3.png";
 import woman from "@/public/images/woman1.png";
 import child from "@/public/images/child1.png";
@@ -11,6 +13,34 @@ import "@/assets/styles/Index.scss";
 
 export default function Home() {
 	const router = useRouter();
+
+	const [products, setProducts] = useState([]);
+	const [displayedProducts, setDisplayedProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState("");
+
+	async function getProducts() {
+		try {
+			const response = await fetch(
+				"https://fashion-ecommerce-backend.onrender.com/products/all/",
+				{
+					method: "GET",
+				},
+			);
+			const res = await response.json();
+			// console.log(res);
+			setProducts(res.slice(0, 3));
+			setDisplayedProducts(res.slice(0, 3));
+		} catch (error) {
+			setError("An error occurred, please try again.");
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		getProducts();
+	}, []);
 
 	return (
 		<div className="home">
@@ -30,13 +60,32 @@ export default function Home() {
 			<div className="arrivals">
 				<h1 className="main-header">New Arrivals</h1>
 				<div className="item-card-container">
-					<ItemCard image={man} name="Men's Blue Button Shirt" price="20 CAD" />
-					<ItemCard
-						image={woman}
-						name="Women's Polkadot Shirt"
-						price="25 CAD"
-					/>
-					<ItemCard image={child} name="Children Blue Jeans" price="10 CAD" />
+					{loading ? (
+						<div className="load-container">
+							<LoadingPage />
+						</div>
+					) : error ? (
+						<div className="category-item-container">
+							<p className="error-big">{error}</p>
+						</div>
+					) : (
+						<>
+							{/* <div className="category-item-container"> */}
+							{products.length !== 0 &&
+								displayedProducts.map((product) => {
+									return (
+										<ItemCard
+											key={product.id}
+											id={product.id}
+											image={product.image}
+											name={product.title}
+											price={`${product.price} CAD`}
+										/>
+									);
+								})}
+							{/* </div> */}
+						</>
+					)}
 				</div>
 			</div>
 
