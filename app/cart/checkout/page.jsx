@@ -28,7 +28,7 @@ const CheckoutPage = () => {
 			setError("Card number should be between 15 and 19 digits long");
 			return;
 		}
-		if (!cardExp || !cardExp1) {
+		if (!cardExp) {
 			setError("Please include card expiry date");
 			return;
 		}
@@ -101,25 +101,17 @@ const CheckoutPage = () => {
 					</div>
 				</div>
 				<div className="checkout-row exp">
-					<label htmlFor="card-expiry" className="exp-la">
-						Expires
-					</label>
 					{/* <br /> */}
-					<div className="checkout-input exp">
+					<div className="checkout-input ">
+						<label htmlFor="card-expiry" className="exp-la">
+							Expires
+						</label>
 						<input
 							type="number"
 							name="card-expiry"
 							// placeholder="02/24"
 							required
 							onChange={(e) => setCardExp(e.target.value)}
-						/>
-						<span>/</span>
-						<input
-							type="number"
-							name="card-expiry1"
-							// placeholder="02/24"
-							required
-							onChange={(e) => setCardExp1(e.target.value)}
 						/>
 					</div>
 					<div className="checkout-input">
