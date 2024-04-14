@@ -32,7 +32,7 @@ const BagsCategory = () => {
 				);
 			});
 			setDisplayedProducts(check);
-			console.log(check);
+			// console.log(check);
 		}
 	}
 

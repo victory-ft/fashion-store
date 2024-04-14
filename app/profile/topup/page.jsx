@@ -58,12 +58,10 @@ const TopupPage = () => {
 			}
 			if (!response.ok) {
 				// console.log(response.json());
-				console.log(response);
 				setError("An error occurred, please try again.");
 			}
 		} catch (error) {
 			setError("An error occurred, please try again.");
-			console.log(error);
 		} finally {
 			setLoading(false);
 		}

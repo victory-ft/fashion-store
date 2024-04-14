@@ -31,7 +31,7 @@ const ProfilePage = () => {
 
 				if (response.ok) {
 					const res = await response.json();
-					console.log(res);
+					// console.log(res);
 					setProfile(res);
 				}
 			} catch (error) {

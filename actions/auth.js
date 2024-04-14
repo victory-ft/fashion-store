@@ -25,12 +25,10 @@ export const login = async (formData) => {
 	);
 	const res = await response.json();
 	if (response.ok) {
-		console.log("logging response", res);
 		cookies().set("token", res.access);
 		redirect("/");
 	}
 	if (!response.ok) {
-		console.log(res);
 	}
 
 	// cookies().set("token", randomUUID());
@@ -63,7 +61,7 @@ export const signUp = async (formData) => {
 		redirect("/login");
 	}
 	if (!response.ok) {
-		console.log(res);
+		// console.log(res);
 	}
 
 	// cookies().set("token", randomUUID());

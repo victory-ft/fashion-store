@@ -68,7 +68,7 @@ const CartPage = () => {
 			);
 			if (response.ok) {
 				const res = await response.json();
-				console.log(res);
+				// console.log(res);
 				setAddress(res.address);
 			}
 		} catch (error) {
@@ -99,7 +99,7 @@ const CartPage = () => {
 			}
 		} catch (error) {
 			// setError("An error occurred, please try again.");
-			console.log(error);
+			// console.log(error);
 		} finally {
 			setLoading(false);
 		}

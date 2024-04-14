@@ -32,7 +32,7 @@ const WomenCategory = () => {
 				);
 			});
 			setDisplayedProducts(check);
-			console.log(check);
+			// console.log(check);
 		}
 	}
 

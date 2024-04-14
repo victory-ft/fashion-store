@@ -28,7 +28,7 @@ const AllCategory = () => {
 				);
 			});
 			setDisplayedProducts(check);
-			console.log(check);
+			// console.log(check);
 		}
 	}
 

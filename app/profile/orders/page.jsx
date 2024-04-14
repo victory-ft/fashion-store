@@ -33,7 +33,6 @@ const OrderPage = () => {
 
 				if (response.ok) {
 					const res = await response.json();
-					console.log(res);
 					// setProfile(res);
 					setOrders(res);
 				}

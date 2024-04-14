@@ -40,7 +40,7 @@ const AddressPage = () => {
 
 				if (response.ok) {
 					const res = await response.json();
-					console.log(res);
+					// console.log(res);
 					setProfile(res);
 				}
 			} catch (error) {
@@ -77,7 +77,6 @@ const AddressPage = () => {
 			if (city) requestBody.city = city;
 			if (province) requestBody.province = province;
 			if (phone_number) requestBody.phone_number = phone_number;
-			console.log(requestBody);
 
 			setUpdateLoading(true);
 			const response = await fetch(
@@ -97,11 +96,9 @@ const AddressPage = () => {
 				router.push("/profile");
 			}
 			if (!response.ok) {
-				console.log(response.json());
 				setUpdateError("An error occurred, please try again.");
 			}
 		} catch (error) {
-			console.log(error);
 			setUpdateError("An error occurred, please try again.");
 		} finally {
 			setUpdateLoading(false);

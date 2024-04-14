@@ -45,7 +45,7 @@ const CheckoutPage = () => {
 			}
 		} catch (error) {
 			setError("An error occurred, please try again.");
-			console.log(error);
+			// console.log(error);
 		} finally {
 			setLoading(false);
 		}
