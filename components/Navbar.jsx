@@ -71,7 +71,7 @@ const Navbar = () => {
 					/>
 				</button>
 				<Link href="/" className="logo-name" onClick={() => setShowMenu(false)}>
-					FASHION
+					LUXE FASHION
 				</Link>
 				<ul className="links no-mobile">
 					<li>

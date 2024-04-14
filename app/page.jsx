@@ -50,8 +50,8 @@ export default function Home() {
 						Find The Best Style For You
 					</h1>
 					<p className="secondary-text">
-						We curate a constantly evolving collection, so you can always find
-						the latest looks to elevate your style.
+						We at Luxe Fashion curate a constantly evolving collection, so you
+						can always find the latest looks to elevate your style.
 					</p>
 					<button onClick={() => router.push("/category/all")}>Shop Now</button>
 				</div>

@@ -12,9 +12,9 @@ const ContactPage = () => {
 				<h1>Get in Touch</h1>
 				<p className="get-in-touch">
 					Have a question about sizing, styling, or our latest collection? We'd
-					love to hear from you! Our friendly team is here to help you find the
-					perfect pieces and elevate your wardrobe. Don't hesitate to reach out
-					via email or give us a call.
+					love to hear from you! The Luxe Fashion team is here to help you find
+					the perfect pieces and elevate your wardrobe. Don't hesitate to reach
+					out via email or give us a call.
 				</p>
 			</div>
 
