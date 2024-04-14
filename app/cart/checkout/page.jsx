@@ -32,7 +32,7 @@ const CheckoutPage = () => {
 			setError("Please include card expiry date");
 			return;
 		}
-		if (cvv.length < 3 || cardNo.length > 3) {
+		if (cvv.length < 3 || cvv.length > 3) {
 			setError("CVV should be 3 digits long");
 			return;
 		}
