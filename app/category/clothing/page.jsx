@@ -75,7 +75,10 @@ const ClothingCategory = () => {
 				</div>
 			) : (
 				<>
-					<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
+					{products.length > 0 && (
+						<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
+					)}
+					{products.length === 0 && <h2>No results found</h2>}
 
 					<div className="category-item-container">
 						{products.length !== 0 &&

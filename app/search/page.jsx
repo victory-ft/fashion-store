@@ -81,7 +81,9 @@ const AllCategory = () => {
 				</div>
 			) : (
 				<>
-					<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
+					{products.length > 0 && (
+						<SearchFilter setFilters={setFilters} resetFilter={resetFilter} />
+					)}
 					<h2 className="search-res">
 						{products.length === 0
 							? "No results found for"
